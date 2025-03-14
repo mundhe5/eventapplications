@@ -1,0 +1,13 @@
+<div *ngIf="event" class="container">
+    <mat-card>
+      <mat-card-title>{{ event.title }}</mat-card-title>
+      <mat-card-subtitle>{{ event.date }}</mat-card-subtitle>
+      <mat-card-content>
+        <p>{{ event.location }}</p>
+        <p>{{ event.description }}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button [routerLink]="['/events']">Back to List</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>

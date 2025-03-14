@@ -1,0 +1,36 @@
+<div class="container">
+    <h2>{{ isEdit ? 'Edit Event' : 'Create New Event' }}</h2>
+    <form #eventForm="ngForm" (ngSubmit)="onSubmit(eventForm)">
+      <mat-form-field appearance="fill">
+        <mat-label>Title</mat-label>
+        <input matInput name="title" [(ngModel)]="event.title" required>
+        <mat-error *ngIf="eventForm.controls['title']?.errors?.['required']">
+          Title is required.
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Date</mat-label>
+        <input matInput [matDatepicker]="picker" name="date" [(ngModel)]="event.date" required>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="eventForm.controls['date']?.errors?.['required']">
+          Date is required.
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Location</mat-label>
+        <input matInput name="location" [(ngModel)]="event.location" required>
+        <mat-error *ngIf="eventForm.controls['location']?.errors?.['required']">
+          Location is required.
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Description</mat-label>
+        <textarea matInput name="description" [(ngModel)]="event.description" required></textarea>
+        <mat-error *ngIf="eventForm.controls['description']?.errors?.['required']">
+          Description is required.
+        </mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit" [disabled]="eventForm.invalid">{{ isEdit ? 'Update Event' : 'Create Event' }}</button>
+    </form>
+  </div>
